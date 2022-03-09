@@ -32,12 +32,10 @@ class _HomePageTWOState extends State<HomePageTWO> {
   }
 
   modifyList({List? list}) async {
-    var list1 = list;
     print(list!.length);
     for (var i = 0; i <= (list.length) - 1; i++) {
       if (list[i] != list.last) {
         if (list[i] + 1 != list[i + 1]) {
-          // list.add(list[i] + 1);
           list2.add(list[i] + 1);
           print('list 2');
           print(list2);
@@ -63,9 +61,15 @@ class _HomePageTWOState extends State<HomePageTWO> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextField(
-                controller: _controller,
-                onChanged: (v) {},
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                    decoration: InputDecoration(
+                        hintText: 'Enter numers with comma seperation'),
+                    controller: _controller,
+                    keyboardType: TextInputType.number,
+                    onChanged: (v) {},
+                    validator: (value) {}),
               ),
               ElevatedButton(
                 onPressed: ontapped,
@@ -107,7 +111,9 @@ class _HomePageTWOState extends State<HomePageTWO> {
                         ),
                       ],
                     )
-                  : Container()
+                  : Center(
+                      child: Text('ENter numbers and click button.'),
+                    )
             ],
           ),
         ),
